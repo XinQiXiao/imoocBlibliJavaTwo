@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 @Service
 public class UserService {
@@ -88,5 +89,21 @@ public class UserService {
         UserInfo userInfo = userDao.getUserInfoByUserId(userId);
         user.setUserInfo(userInfo);
         return user;
+    }
+
+    public void updateUsers(User user) throws Exception {
+        Long userId = user.getId();
+        User dbUser = userDao.getUserById(userId);
+        if(dbUser == null){
+            throw new ConditionException("用户不存在！");
+        }
+        if(!StringUtils.isNullOrEmpty(user.getPassword())){
+            String rawPassword = RSAUtil.decrypt(user.getPassword());
+            String salt = dbUser.getSalt();
+            String md5Password = MD5Util.sign(rawPassword, salt, "UTF-8");
+            user.setPassword(md5Password);
+        }
+        user.setUpdateTime(new Date());
+        userDao.updateUsers(user);
     }
 }

@@ -77,4 +77,22 @@
         where
             userId = #{userId}
     </select>
+    
+    <update id="updateUsers" parameterType="com.imooc.bilibili.domain.User">
+        update
+            t_user
+        set
+            <if test="phone != null and phone != '' ">
+                phone = #{phone},
+            </if>
+            <if test="email != null and email != '' ">
+                email = #{email},
+            </if>
+            <if test="password != null and password != '' ">
+                password = #{password},
+            </if>
+            updateTime = #{updateTime}
+        where
+            id = #{id}
+    </update>
 </mapper>
