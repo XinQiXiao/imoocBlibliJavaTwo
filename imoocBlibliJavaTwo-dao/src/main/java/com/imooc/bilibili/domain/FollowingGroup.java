@@ -1,6 +1,7 @@
 package com.imooc.bilibili.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class FollowingGroup {
 
@@ -15,6 +16,26 @@ public class FollowingGroup {
     private Date createTime;
 
     private Date updateTime;
+
+    private List<UserInfo> followingUserInfoList;
+
+    public List<UserInfo> getFollowingUserInfoList() {
+        return followingUserInfoList;
+    }
+
+    public void setFollowingUserInfoList(List<UserInfo> followingUserInfoList) {
+        this.followingUserInfoList = followingUserInfoList;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    private Integer count;
 
     public Long getId() {
         return id;
