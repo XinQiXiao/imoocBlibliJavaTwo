@@ -11,7 +11,7 @@
             userId = #{userId} and followingId = #{followingId}
     </delete>
 
-    <insert id="addUserInfo" parameterType="com.imooc.bilibili.domain.UserInfo" >
+    <insert id="addUserFollowing" parameterType="com.imooc.bilibili.domain.UserFollowing" >
         insert into
             t_user_following(
                 userId,
