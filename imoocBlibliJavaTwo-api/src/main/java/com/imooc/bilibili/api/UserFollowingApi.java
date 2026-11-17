@@ -37,4 +37,11 @@ public class UserFollowingApi {
         return new JsonResponse<>(result);
     }
 
+    @GetMapping("/user-fans")
+    public JsonResponse<List<UserFollowing>> getUserFans(){
+        Long userId = userSupport.getCurrentUserId();
+        List<UserFollowing> result = userFollowingService.getUserFans(userId);
+        return new JsonResponse<>(result);
+    }
+
 }
