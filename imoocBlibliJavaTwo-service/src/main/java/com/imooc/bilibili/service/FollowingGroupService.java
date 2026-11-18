@@ -24,4 +24,12 @@ public class FollowingGroupService {
     public List<FollowingGroup> getByUserId(Long userId) {
         return followingGroupDao.getByUserId(userId);
     }
+
+    public List<FollowingGroup> getUserFollowingGroups(Long userId) {
+        return followingGroupDao.getUserFollowingGroups(userId);
+    }
+
+    public void addUserFollowingGroups(FollowingGroup followingGroup) {
+        followingGroupDao.addUserFollowingGroups(followingGroup);
+    }
 }

@@ -125,4 +125,15 @@ public class UserFollowingService {
 
         return fanList;
     }
+
+    public List<FollowingGroup> getUserFollowingGroups(Long userId) {
+        return followingGroupService.getUserFollowingGroups(userId);
+    }
+
+    public Long addUserFollowingGroups(FollowingGroup followingGroup) {
+        followingGroup.setCreateTime(new Date());
+        followingGroup.setType(UserConstant.USER_FOLLOWING_GROUP_TYPE_USER);
+        followingGroupService.addUserFollowingGroups(followingGroup);
+        return followingGroup.getId();
+    }
 }

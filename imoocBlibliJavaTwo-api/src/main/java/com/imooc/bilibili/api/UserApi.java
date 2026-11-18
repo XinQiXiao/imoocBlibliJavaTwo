@@ -4,6 +4,7 @@ import com.imooc.bilibili.api.support.UserSupport;
 import com.imooc.bilibili.domain.JsonResponse;
 import com.imooc.bilibili.domain.User;
 import com.imooc.bilibili.domain.UserInfo;
+import com.imooc.bilibili.service.UserFollowingService;
 import com.imooc.bilibili.service.UserService;
 import com.imooc.bilibili.service.util.RSAUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class UserApi {
 
     @Autowired
     private UserSupport userSupport;
+
+    @Autowired
+    private UserFollowingService userFollowingService;
 
     @GetMapping("/rsa-pks")
     public JsonResponse<String> getRsaPublicKey(){
